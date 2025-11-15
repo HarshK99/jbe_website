@@ -1,0 +1,29 @@
+import Button from './ui/Button';
+
+const products = [
+  { name: 'Booster Compressor', desc: 'High-performance boosting solutions.' },
+  { name: 'Rotary Screw Compressor', desc: 'Efficient rotary screw technology.' },
+  { name: 'Oil-Free High Pressure Water-Cooled', desc: 'Clean, high-pressure compression.' },
+  { name: 'Oil-Free Medium Pressure Water-Cooled', desc: 'Reliable medium-pressure systems.' },
+  { name: 'Reciprocating Compressors (Single-stage)', desc: 'Durable single-stage reciprocating.' },
+  { name: 'Reciprocating Compressors (Two-stage)', desc: 'Powerful two-stage reciprocating.' },
+];
+
+export default function ProductsShowcase() {
+  return (
+    <section id="products" className="py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Our Products</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+              <p className="text-gray-600 mb-4">{product.desc}</p>
+              <Button>Get Free Quote</Button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
