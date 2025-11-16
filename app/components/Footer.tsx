@@ -2,31 +2,25 @@ export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p>Address: G-10, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</p>
-            <p>Phone: +91-99540-51247</p>
-            <p>Email: jaibalajient@gmail.com</p>
-            <p>WhatsApp: +91-99540-51247</p>
+        <div className="flex flex-col md:flex-row gap-8 items-center justify-center text-center">
+          <div className="space-y-2 text-center max-w-lg">
+            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <p className="text-sm">G-10, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</p>
+            <p className="text-sm">Phone: +91-99540-51247</p>
+            <p className="text-sm">Email: <a href="mailto:jaibalajient@gmail.com" className="underline hover:text-gray-300">jaibalajient@gmail.com</a></p>
+            <p className="text-sm">WhatsApp: +91-99540-51247</p>
           </div>
 
-          {/* <div>
-            <h3 className="text-lg font-semibold mb-4">Departments</h3>
-            <p>Sales</p>
-            <p>Service</p>
-            <p>Purchase</p>
-            <p>HR</p>
-          </div> */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Links</h3>
-            <a href="#" className="block hover:underline">Privacy Policy</a>
-            <a href="#" className="block hover:underline">Terms & Conditions</a>
-            {/* <a href="#" className="block hover:underline">Sitemap</a> */}
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <p>Social Media Links</p>
+          
+          
+
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col items-center justify-center gap-3 text-center">
+              <div>© {new Date().getFullYear()} JBE Manufacturing. All rights reserved.</div>
+            </div>
           </div>
         </div>
       </div>

@@ -98,14 +98,14 @@ export default function EnquiryForm() {
 
   if (isSubmitted) {
     return (
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <h2 className="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
-            <p className="text-lg text-gray-700 mb-4">
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-xl">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl font-bold text-green-600 mb-3">Thank You!</h2>
+            <p className="text-base text-gray-700 mb-3">
               Your enquiry has been submitted successfully. We will get back to you within 24 hours.
             </p>
-            <Button onClick={() => setIsSubmitted(false)}>Submit Another Enquiry</Button>
+            <Button onClick={() => setIsSubmitted(false)} className="px-4 py-2">Submit Another Enquiry</Button>
           </div>
         </div>
       </section>
@@ -113,16 +113,16 @@ export default function EnquiryForm() {
   }
 
   return (
-    <section id="enquiry" className="py-16 bg-gray-50 scroll-mt-16">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Request a Free Quote</h2>
-            <p className="text-gray-600">We will get back to you within 24 hours</p>
+    <section id="enquiry" className="py-12 bg-gray-50 scroll-mt-16">
+      <div className="container mx-auto px-4 max-w-2xl">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-1">Request a Quote</h2>
+            <p className="text-sm text-gray-600">We will get back to you within 24 hours</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="grid md:grid-cols-2 gap-3">
               <Input
                 label="Name *"
                 value={formData.name}
@@ -188,8 +188,8 @@ export default function EnquiryForm() {
             />
 
             <div className="text-center">
-              <Button type="submit" size="lg" className="w-full md:w-auto">
-                Submit to Get Free Quote Now
+              <Button type="submit" className="w-full md:w-auto px-4 py-2">
+                Submit to Get Quote Now
               </Button>
             </div>
           </form>

@@ -3,9 +3,9 @@ export default function MissionStatement() {
     <section className="py-16 bg-primary text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-        <p className="text-xl mb-6"> Deliver reliable, high-quality compressor parts and heat exchangers that keep industries running smoothly </p> 
-        <p className="text-lg"> We focus on precision, durability and continuous improvement to support the critical operations of our clients </p>
-      </div>
+       <p className="text-xl mb-6"> Deliver OEM-grade compressor parts and heat exchangers that offer precision, durability and full interchangeability </p>
+        <p className="text-lg"> We are committed to strict quality control, advanced manufacturing practices and timely delivery to support every client’s critical operations </p>
+        </div>
     </section>
   );
 }

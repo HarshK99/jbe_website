@@ -2,8 +2,8 @@ import CounterBox from './CounterBox';
 import { ReactNode } from 'react';
 
 const stats: { target: number; label: string; suffix?: string; header?: ReactNode }[] = [
-  { target: 40, suffix: '+', label: 'Years', header: 'Years of Experience' },
-  { target: 32, suffix: '+', label: 'Countries', header: 'Countries Presence' },
+  { target: 19, suffix: '+', label: 'Years', header: 'Years of Experience' },
+  { target: 8, suffix: '+', label: 'core products line', header: 'Product Categories' },
   { target: 20, suffix: '+', label: 'Large Clients', header: 'Satisfied Clients' },
 ];
 export default function CountersSection() {
