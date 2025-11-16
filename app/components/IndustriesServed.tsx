@@ -1,7 +1,18 @@
 const industries = [
-  'Construction', 'Manufacturing', 'Agriculture', 'Energy', 'HVAC', 'Pharmaceuticals',
-  'Food & Beverage', 'Aerospace', 'Automotive', 'Hospitals', 'Mining', 'Transportation'
+  'Oil & Gas',
+  'Petrochemicals',
+  'Fertilizer Plants',
+  'Cement Manufacturing',
+  'Power Generation',
+  'Railways',
+  'Paper & Pulp',
+  'Heavy Machinery',
+  'Mining',
+  'Refrigeration & HVAC',
+  'Industrial Engineering',
+  'Process Industries'
 ];
+
 
 export default function IndustriesServed() {
   return (

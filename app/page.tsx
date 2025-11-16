@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import CountersSection from './components/CountersSection';
 import ProductsShowcase from './components/ProductsShowcase';
 import IndustriesServed from './components/IndustriesServed';
 import MissionStatement from './components/MissionStatement';
@@ -15,11 +16,10 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <CountersSection />
       <ProductsShowcase />
       <IndustriesServed />
       <MissionStatement />
-      <NewsEvents />
-      <FAQs />
       <EnquiryForm />
       <Footer />
     </div>

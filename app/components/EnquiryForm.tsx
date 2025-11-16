@@ -113,7 +113,7 @@ export default function EnquiryForm() {
   }
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section id="enquiry" className="py-16 bg-gray-50 scroll-mt-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="bg-white p-8 rounded-lg shadow-lg">
           <div className="text-center mb-8">
@@ -121,8 +121,8 @@ export default function EnquiryForm() {
             <p className="text-gray-600">We will get back to you within 24 hours</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <Input
                 label="Name *"
                 value={formData.name}
@@ -137,7 +137,7 @@ export default function EnquiryForm() {
               />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               <Input
                 label="Contact Person"
                 value={formData.contactPerson}
@@ -153,7 +153,7 @@ export default function EnquiryForm() {
               />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               <Input
                 label="Phone *"
                 type="tel"
@@ -171,7 +171,7 @@ export default function EnquiryForm() {
               />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               <Input
                 label="City"
                 value={formData.city}
