@@ -41,6 +41,8 @@ export default function EnquiryForm() {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -65,13 +67,41 @@ export default function EnquiryForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
+    setSubmitError(null);
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+    try {
+      const payload = {
+        name: formData.name,
+        companyName: formData.companyName,
+        contactPerson: formData.contactPerson,
+        email: formData.email,
+        phone: formData.phone,
+        country: formData.country,
+        city: formData.city,
+        description: formData.description,
+        _subject: 'Website Enquiry - JBE Manufacturing',
+        _template: 'table'
+      };
+
+      const res = await fetch('https://formsubmit.co/ajax/jaibalajient@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'Submission failed');
+      }
+
       setIsSubmitted(true);
-      // Reset form after submission
       setFormData({
         name: '',
         companyName: '',
@@ -83,6 +113,11 @@ export default function EnquiryForm() {
         description: '',
       });
       setErrors({});
+    } catch (err: any) {
+      console.error('Form submission error', err);
+      setSubmitError(err?.message || 'Submission failed. Please try again later.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -98,14 +133,14 @@ export default function EnquiryForm() {
 
   if (isSubmitted) {
     return (
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <h2 className="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
-            <p className="text-lg text-gray-700 mb-4">
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-xl">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl font-bold text-green-600 mb-3">Thank You!</h2>
+            <p className="text-base text-gray-700 mb-3">
               Your enquiry has been submitted successfully. We will get back to you within 24 hours.
             </p>
-            <Button onClick={() => setIsSubmitted(false)}>Submit Another Enquiry</Button>
+            <Button onClick={() => setIsSubmitted(false)} className="px-4 py-2">Submit Another Enquiry</Button>
           </div>
         </div>
       </section>
@@ -113,16 +148,16 @@ export default function EnquiryForm() {
   }
 
   return (
-    <section id="enquiry" className="py-16 bg-gray-50 scroll-mt-16">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Request a Free Quote</h2>
-            <p className="text-gray-600">We will get back to you within 24 hours</p>
+    <section id="enquiry" className="py-12 bg-gray-50 scroll-mt-16">
+      <div className="container mx-auto px-4 max-w-2xl">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-1">Request a Quote</h2>
+            <p className="text-sm text-gray-600">We will get back to you within 24 hours</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="grid md:grid-cols-2 gap-3">
               <Input
                 label="Name *"
                 value={formData.name}
@@ -188,10 +223,13 @@ export default function EnquiryForm() {
             />
 
             <div className="text-center">
-              <Button type="submit" size="lg" className="w-full md:w-auto">
-                Submit to Get Free Quote Now
+              <Button type="submit" disabled={isLoading} className="w-full md:w-auto px-4 py-2">
+                {isLoading ? 'Sending...' : 'Submit to Get Quote Now'}
               </Button>
             </div>
+            {submitError && (
+              <div className="text-center mt-3 text-sm text-red-500">{submitError}</div>
+            )}
           </form>
 
           <div className="text-center mt-6">
