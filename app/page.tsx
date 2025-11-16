@@ -18,8 +18,6 @@ export default function Home() {
       <ProductsShowcase />
       <IndustriesServed />
       <MissionStatement />
-      <NewsEvents />
-      <FAQs />
       <EnquiryForm />
       <Footer />
     </div>

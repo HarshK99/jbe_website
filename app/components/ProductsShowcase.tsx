@@ -1,13 +1,14 @@
 import Button from './ui/Button';
 
 const products = [
-  { name: 'Booster Compressor', desc: 'High-performance boosting solutions.' },
-  { name: 'Rotary Screw Compressor', desc: 'Efficient rotary screw technology.' },
-  { name: 'Oil-Free High Pressure Water-Cooled', desc: 'Clean, high-pressure compression.' },
-  { name: 'Oil-Free Medium Pressure Water-Cooled', desc: 'Reliable medium-pressure systems.' },
-  { name: 'Reciprocating Compressors (Single-stage)', desc: 'Durable single-stage reciprocating.' },
-  { name: 'Reciprocating Compressors (Two-stage)', desc: 'Powerful two-stage reciprocating.' },
+  { name: 'Compressor Parts', desc: 'Precision rings, pistons, valves and seals.' },
+  { name: 'Heat Exchangers', desc: 'Air and water-cooled cooling solutions.' },
+  { name: 'PTFE Components', desc: 'Custom seals, gaskets and guide rings.' },
+  { name: 'Pneumatic Fittings', desc: 'Connectors, elbows, FRLs and tubes.' },
+  { name: 'Hydraulic Spares', desc: 'Engineered rollers, pumps and spares.' },
+  { name: 'CNG Compressor Spares', desc: 'Parts for booster and dispenser units.' },
 ];
+
 
 export default function ProductsShowcase() {
   return (

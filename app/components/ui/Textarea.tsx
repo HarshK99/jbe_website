@@ -18,7 +18,7 @@ export default function Textarea({
   const classes = `${baseClasses} ${errorClasses} ${className}`;
 
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       {label && (
         <label className="block text-sm font-medium text-gray-700 mb-1">
           {label}
