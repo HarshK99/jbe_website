@@ -20,7 +20,7 @@ export default function ProductsShowcase() {
             <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
               <p className="text-gray-600 mb-4">{product.desc}</p>
-              <Button>Get Free Quote</Button>
+              <Button href="#enquiry">Get Free Quote</Button>
             </div>
           ))}
         </div>
