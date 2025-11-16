@@ -14,45 +14,41 @@ const industries = [
 
 const icons: Record<string, ReactNode> = {
   'Oil and Gas': (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M12 2s4 3 4 6a4 4 0 1 1-8 0c0-3 4-6 4-6z" fill="currentColor" />
-      <path d="M4 20c0-4 4-6 8-6s8 2 8 6v1H4v-1z" fill="currentColor" opacity="0.9" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2C9 5.5 7 8 7 11a5 5 0 0010 0c0-3-2-5.5-5-9z" />
     </svg>
   ),
   Petrochemical: (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M6 2v6l6 3 6-3V2H6z" fill="currentColor" />
-      <path d="M4 18h16v2H4z" fill="currentColor" opacity="0.9" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M7 2v6l5 6v6h2v-6l5-6V2H7z" />
     </svg>
   ),
   Fertilizers: (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M12 2C8 8 4 9 4 13a8 8 0 0 0 16 0c0-4-4-5-8-11z" fill="currentColor" />
-      <path d="M12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#fff" opacity="0.9" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2s-5 4-7 8a7 7 0 0014 0c-2-4-7-8-7-8z" />
     </svg>
   ),
   Railways: (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <rect x="3" y="4" width="18" height="12" rx="2" fill="currentColor" />
-      <path d="M7 18l-1 3h3l1-3M17 18l1 3h-3l-1-3" stroke="#fff" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <rect x="3" y="5" width="18" height="10" rx="2" />
+      <circle cx="8.5" cy="17.5" r="1.5" fill="currentColor" />
+      <circle cx="15.5" cy="17.5" r="1.5" fill="currentColor" />
     </svg>
   ),
   Cement: (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M4 3h10v6l4 2v8H4V3z" fill="currentColor" />
-      <path d="M8 21v-8" stroke="#fff" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M4 6h16v5l-8 4-8-4V6z" />
     </svg>
   ),
   'Power Plants': (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M12 2L8 12h8l-4-10z" fill="currentColor" />
-      <path d="M6 18h12v4H6z" fill="currentColor" opacity="0.9" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M13 2L3 14h7l-1 8 11-12h-7l1-8z" />
     </svg>
   ),
   'Construction Companies': (
-    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      <path d="M3 13h18v6H3z" fill="currentColor" />
-      <path d="M7 13V6l5-3 5 3v7" stroke="#fff" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-12 h-12 mx-auto mb-2 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M3 13h18v6H3z" />
+      <path d="M8 13V7l4-3 4 3v6" />
     </svg>
   )
 };
@@ -86,7 +82,7 @@ export default function IndustriesServed() {
 
     rafId = requestAnimationFrame(step);
 
-    // pause on hover
+    // pause on hover / touch
     function onEnter() {
       cancelAnimationFrame(rafId);
     }
@@ -95,13 +91,25 @@ export default function IndustriesServed() {
       rafId = requestAnimationFrame(step);
     }
 
+    function onTouchStart() {
+      cancelAnimationFrame(rafId);
+    }
+    function onTouchEnd() {
+      lastTimestamp = performance.now();
+      rafId = requestAnimationFrame(step);
+    }
+
     container.addEventListener('mouseenter', onEnter);
     container.addEventListener('mouseleave', onLeave);
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchend', onTouchEnd);
 
     return () => {
       cancelAnimationFrame(rafId);
       container.removeEventListener('mouseenter', onEnter);
       container.removeEventListener('mouseleave', onLeave);
+      container.removeEventListener('touchstart', onTouchStart as EventListener);
+      container.removeEventListener('touchend', onTouchEnd as EventListener);
     };
   }, []);
 
@@ -113,9 +121,9 @@ export default function IndustriesServed() {
         {/* Horizontal autoscroll track */}
         <div
           ref={trackRef}
-          className="overflow-hidden"
+          className="overflow-x-auto touch-pan-x hide-scrollbar"
           style={{
-            // hide native scrollbar in some browsers but keep functionality
+            // allow horizontal touch scrolling on mobile while autoscroll runs on desktop
           }}
         >
           <div className="flex gap-6 items-stretch" aria-hidden={false}>

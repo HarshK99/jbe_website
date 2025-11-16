@@ -41,6 +41,8 @@ export default function EnquiryForm() {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -65,13 +67,41 @@ export default function EnquiryForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
+    setSubmitError(null);
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+    try {
+      const payload = {
+        name: formData.name,
+        companyName: formData.companyName,
+        contactPerson: formData.contactPerson,
+        email: formData.email,
+        phone: formData.phone,
+        country: formData.country,
+        city: formData.city,
+        description: formData.description,
+        _subject: 'Website Enquiry - JBE Manufacturing',
+        _template: 'table'
+      };
+
+      const res = await fetch('https://formsubmit.co/ajax/jaibalajient@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'Submission failed');
+      }
+
       setIsSubmitted(true);
-      // Reset form after submission
       setFormData({
         name: '',
         companyName: '',
@@ -83,6 +113,11 @@ export default function EnquiryForm() {
         description: '',
       });
       setErrors({});
+    } catch (err: any) {
+      console.error('Form submission error', err);
+      setSubmitError(err?.message || 'Submission failed. Please try again later.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -188,10 +223,13 @@ export default function EnquiryForm() {
             />
 
             <div className="text-center">
-              <Button type="submit" className="w-full md:w-auto px-4 py-2">
-                Submit to Get Quote Now
+              <Button type="submit" disabled={isLoading} className="w-full md:w-auto px-4 py-2">
+                {isLoading ? 'Sending...' : 'Submit to Get Quote Now'}
               </Button>
             </div>
+            {submitError && (
+              <div className="text-center mt-3 text-sm text-red-500">{submitError}</div>
+            )}
           </form>
 
           <div className="text-center mt-6">

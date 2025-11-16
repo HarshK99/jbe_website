@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Industrial Air Compressor Manufacturers | Ahmedabad, India",
-  description: "Leading manufacturers of industrial air compressors and vacuum pumps. 40+ years experience, serving 32 countries.",
+  title: "Jai Balaji Enterprises - Best OEM-equivalent compressor parts",
+  description: "Best OEM-equivalent compressor parts and heat exchanger manufacturers in India",
 };
 
 export default function RootLayout({

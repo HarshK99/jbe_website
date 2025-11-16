@@ -51,13 +51,25 @@ export default function ClientsSection() {
       rafId = requestAnimationFrame(step);
     }
 
+    function onTouchStart() {
+      cancelAnimationFrame(rafId);
+    }
+    function onTouchEnd() {
+      lastTimestamp = performance.now();
+      rafId = requestAnimationFrame(step);
+    }
+
     container.addEventListener('mouseenter', onEnter);
     container.addEventListener('mouseleave', onLeave);
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchend', onTouchEnd);
 
     return () => {
       cancelAnimationFrame(rafId);
       container.removeEventListener('mouseenter', onEnter);
       container.removeEventListener('mouseleave', onLeave);
+      container.removeEventListener('touchstart', onTouchStart as EventListener);
+      container.removeEventListener('touchend', onTouchEnd as EventListener);
     };
   }, []);
 
@@ -65,7 +77,7 @@ export default function ClientsSection() {
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">Our Clients</h2>
-        <div ref={trackRef} className="overflow-hidden">
+        <div ref={trackRef} className="overflow-x-auto touch-pan-x hide-scrollbar">
           <div className="flex gap-6 items-center" aria-hidden={false}>
             {[0, 1].map((rep) =>
               clients.map((c, idx) => (

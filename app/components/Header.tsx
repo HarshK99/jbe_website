@@ -9,8 +9,8 @@ export default function Header() {
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-3">
             <Image src="/logo.png" alt="Company Logo" width={64} height={64} />
-            <div className="hidden sm:block">
-              <span className="text-lg font-semibold text-gray-900">Jai Balaji Enterprises</span>
+            <div className="block">
+              <span className="text-base md:text-lg font-semibold text-gray-900">Jai Balaji <span className="block md:inline">Enterprises</span></span>
               {/* <div className="text-xs text-gray-600">Compressors · Heat Exchangers · Spares</div> */}
             </div>
           </Link>
