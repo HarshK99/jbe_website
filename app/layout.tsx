@@ -16,12 +16,8 @@ export const metadata: Metadata = {
   title: "Jai Balaji Enterprises - Best OEM-equivalent compressor parts",
   description: "Best OEM-equivalent compressor parts and heat exchanger manufacturers in India",
   icons: {
-    icon: [
-      { url: '/logo.png' },
-      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/logo.png', sizes: '16x16', type: 'image/png' }
-    ],
-    apple: '/logo.png'
+    icon: '/logo_square.png',
+    apple: '/logo_square.png'
   },
 };
 
