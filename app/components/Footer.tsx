@@ -1,8 +1,10 @@
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
+const PHONE_NUMBERS = ['+91-8486417553','+91-99540-51267']; // update the second number as needed
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer className="bg-gray-800 text-white py-5">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8 items-center justify-center text-center">
           <div className="space-y-2 text-center max-w-lg">
@@ -11,19 +13,32 @@ export default function Footer() {
               <span className="flex-shrink-0 mt-1">
                 <FaMapMarkerAlt className="w-5 h-5 text-gray-300" aria-hidden />
               </span>
-              <span className="text-left max-w-[36ch]">G-10, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</span>
+              <span className="text-left max-w-[36ch]">501, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</span>
+            </p>
+            <div className="text-sm flex flex-col items-center justify-center gap-2">
+              {PHONE_NUMBERS.map((p, i) => (
+                <a
+                  key={p}
+                  href={`tel:${p.replace(/[^+\d]/g, '')}`}
+                  className="flex items-center gap-2 hover:underline"
+                  aria-label={`Call ${p}`}
+                >
+                  <FaPhone className="w-5 h-5 text-gray-300" aria-hidden />
+                  <span>{p}</span>
+                </a>
+              ))}
+            </div>
+            <p className="text-sm flex items-center justify-center gap-2">
+              <a href="mailto:jaibalajient@gmail.com" className="flex items-center gap-2 underline hover:text-gray-300" aria-label="Email jaibalajient@gmail.com">
+                <FaEnvelope className="w-5 h-5 text-gray-300" aria-hidden />
+                <span>jaibalajient@gmail.com</span>
+              </a>
             </p>
             <p className="text-sm flex items-center justify-center gap-2">
-              <FaPhone className="w-5 h-5 text-gray-300" aria-hidden />
-              <a href="tel:+919954051247" className="hover:underline">+91-99540-51247</a>
-            </p>
-            <p className="text-sm flex items-center justify-center gap-2">
-              <FaEnvelope className="w-5 h-5 text-gray-300" aria-hidden />
-              <a href="mailto:jaibalajient@gmail.com" className="underline hover:text-gray-300">jaibalajient@gmail.com</a>
-            </p>
-            <p className="text-sm flex items-center justify-center gap-2">
-              <FaWhatsapp className="w-5 h-5 text-gray-300" aria-hidden />
-              <a href="https://wa.me/919954051247" className="hover:underline">WhatsApp: +91-99540-51247</a>
+              <a href="https://wa.me/919954051247" className="flex items-center gap-2 hover:underline" aria-label="WhatsApp chat">
+                <FaWhatsapp className="w-5 h-5 text-gray-300" aria-hidden />
+                <span>WhatsApp: +91-99540-51247</span>
+              </a>
             </p>
           </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
+import useAutoScroll from '../hooks/useAutoScroll';
 
 const industries = [
   'Oil and Gas',
@@ -57,61 +58,8 @@ const icons: Record<string, ReactNode> = {
 
 export default function IndustriesServed() {
   const trackRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const container = el;
-
-    // Duplicate width threshold (we will duplicate children for seamless scroll)
-    let rafId: number;
-    let lastTimestamp = performance.now();
-    const speed = 30; // pixels per second
-
-    function step(ts: number) {
-      const delta = (ts - lastTimestamp) / 1000;
-      lastTimestamp = ts;
-      // advance scroll
-      container.scrollLeft += speed * delta;
-      // when we've scrolled past half (the duplicated set), reset
-      if (container.scrollLeft >= container.scrollWidth / 2) {
-        container.scrollLeft = container.scrollLeft - container.scrollWidth / 2;
-      }
-      rafId = requestAnimationFrame(step);
-    }
-
-    rafId = requestAnimationFrame(step);
-
-    // pause on hover / touch
-    function onEnter() {
-      cancelAnimationFrame(rafId);
-    }
-    function onLeave() {
-      lastTimestamp = performance.now();
-      rafId = requestAnimationFrame(step);
-    }
-
-    function onTouchStart() {
-      cancelAnimationFrame(rafId);
-    }
-    function onTouchEnd() {
-      lastTimestamp = performance.now();
-      rafId = requestAnimationFrame(step);
-    }
-
-    container.addEventListener('mouseenter', onEnter);
-    container.addEventListener('mouseleave', onLeave);
-    container.addEventListener('touchstart', onTouchStart, { passive: true });
-    container.addEventListener('touchend', onTouchEnd);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      container.removeEventListener('mouseenter', onEnter);
-      container.removeEventListener('mouseleave', onLeave);
-      container.removeEventListener('touchstart', onTouchStart as EventListener);
-      container.removeEventListener('touchend', onTouchEnd as EventListener);
-    };
-  }, []);
+  // use shared autoscroll hook (30 px/s)
+  useAutoScroll(trackRef, 30);
 
   return (
     <section className="py-12 bg-gray-50">
