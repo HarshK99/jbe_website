@@ -34,7 +34,7 @@ export default function EnquiryForm() {
     contactPerson: '',
     email: '',
     phone: '',
-    country: '',
+    country: 'IN',
     city: '',
     description: '',
   });
@@ -195,7 +195,6 @@ export default function EnquiryForm() {
                 value={formData.phone}
                 onChange={handleChange('phone')}
                 error={errors.phone}
-                placeholder="+91 XXXXX XXXXX"
                 required
               />
               <Select
@@ -224,7 +223,7 @@ export default function EnquiryForm() {
 
             <div className="text-center">
               <Button type="submit" disabled={isLoading} className="w-full md:w-auto px-4 py-2">
-                {isLoading ? 'Sending...' : 'Submit to Get Quote Now'}
+                {isLoading ? 'Sending...' : 'Submit to Get Quote'}
               </Button>
             </div>
             {submitError && (
