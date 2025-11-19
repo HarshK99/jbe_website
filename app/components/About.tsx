@@ -9,15 +9,15 @@ export default function About() {
           <p className="text-lg text-gray-800 mb-6"> Our manufacturing facility is equipped with advanced machinery and a large-scale production setup that enables high-accuracy machining and efficient bulk manufacturing. Every component is subjected to rigorous, multi-stage quality checks to ensure flawless performance and consistency. Guided by the expertise and vision of our founder, Mr. Mahesh Mour, we have steadily built a strong presence across multiple industries by combining engineering expertise, disciplined processes and a coordinated supply chain. Today, Jai Balaji Enterprises continues to focus on quality, innovation and timely delivery, supplying reliable components that support the critical operations of industries across the country. </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-2">19+ years experience</h3>
+              <h3 className="text-xl font-semibold mb-2">20+ Years Experience</h3>
               <p className="text-gray-700">Proven expertise in high-quality compressor components</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-2">OEM-grade precision</h3>
+              <h3 className="text-xl font-semibold mb-2">OEM-grade Precision</h3>
               <p className="text-gray-700">All products meet OEM standards with MTC and TPI support</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-2">Advanced manufacturing</h3>
+              <h3 className="text-xl font-semibold mb-2">Advanced Manufacturing</h3>
               <p className="text-gray-700">State-of-the-art machinery with strict multi-stage quality checks</p>
             </div>
           </div>

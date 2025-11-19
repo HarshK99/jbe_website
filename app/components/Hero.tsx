@@ -50,30 +50,12 @@ export default function Hero() {
           </h1>
           <p className="text-lg md:text-xl mb-8">Enhancing precision. Enhancing performance</p>
           <Button href="#enquiry" variant="secondary" size="lg" className="bg-primary text-white">
-            Get Quote
+            <span className="relative z-10 transition-transform duration-300 ease-in-out transition-colors group-hover:scale-105 group-hover:text-primary">Get Quote</span>
           </Button>
         </div>
       </div>
 
-      {/* Controls */}
-      <div className="absolute left-4 top-1/2 z-30 -translate-y-1/2">
-        <button
-          onClick={prev}
-          aria-label="Previous slide"
-          className="bg-black/40 text-white rounded-full p-2 hover:bg-black/60"
-        >
-          ‹
-        </button>
-      </div>
-      <div className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
-        <button
-          onClick={next}
-          aria-label="Next slide"
-          className="bg-black/40 text-white rounded-full p-2 hover:bg-black/60"
-        >
-          ›
-        </button>
-      </div>
+    
 
       {/* Dots */}
       <div className="absolute left-0 right-0 bottom-8 z-30 flex items-center justify-center gap-2">

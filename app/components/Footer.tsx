@@ -1,6 +1,6 @@
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
-const PHONE_NUMBERS = ['+91-8486417553','+91-99540-51267']; // update the second number as needed
+const PHONE_NUMBERS = ['+91-84864-17553','+91-99540-51267']; 
 
 export default function Footer() {
   return (
@@ -10,10 +10,12 @@ export default function Footer() {
           <div className="space-y-2 text-center max-w-lg">
             <h3 className="text-lg font-semibold">Contact Us</h3>
             <p className="text-sm flex items-start justify-center gap-3">
-              <span className="flex-shrink-0 mt-1">
-                <FaMapMarkerAlt className="w-5 h-5 text-gray-300" aria-hidden />
-              </span>
-              <span className="text-left max-w-[36ch]">501, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</span>
+              <a href="https://maps.app.goo.gl/vaRAtZ94oECAsdWd7" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:underline" aria-label="Open location in Google Maps">
+                <span className="flex-shrink-0 mt-1">
+                  <FaMapMarkerAlt className="w-5 h-5 text-gray-300" aria-hidden />
+                </span>
+                <span className="text-left max-w-[36ch]">501, PB Complex, AT Road, Opp. Rupasree Cinema Hall, Guwahati – 781001, Assam</span>
+              </a>
             </p>
             <div className="text-sm flex flex-col items-center justify-center gap-2">
               {PHONE_NUMBERS.map((p, i) => (
@@ -35,7 +37,7 @@ export default function Footer() {
               </a>
             </p>
             <p className="text-sm flex items-center justify-center gap-2">
-              <a href="https://wa.me/919954051247" className="flex items-center gap-2 hover:underline" aria-label="WhatsApp chat">
+              <a href="https://wa.me/918486417553" className="flex items-center gap-2 hover:underline" aria-label="WhatsApp chat">
                 <FaWhatsapp className="w-5 h-5 text-gray-300" aria-hidden />
                 <span>WhatsApp: +91-84864-17553</span>
               </a>
