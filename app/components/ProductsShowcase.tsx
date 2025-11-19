@@ -21,16 +21,17 @@ export default function ProductsShowcase() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition flex flex-col">
-              <div className="w-full h-44 md:h-56 lg:h-64 bg-gray-100 rounded overflow-hidden mb-4 flex items-center justify-center p-3">
-                <picture>
-                  <source srcSet={`/products/0${product.imageBase}.png`} type="image/png" />
-                  <img
-                    src={`/products/${product.imageBase}.svg`}
-                    alt={product.name}
-                    className="max-w-full max-h-full object-contain"
-                    loading="lazy"
-                  />
-                </picture>
+              <div className=" h-44 md:h-56 lg:h-64 rounded overflow-hidden mb-4 flex items-center justify-center p-3">
+                  <picture className="w-full h-full flex items-center justify-center">
+                    <source srcSet={`/products/0${product.imageBase}.png`} type="image/png" />
+                    <img
+                      src={`/products/${product.imageBase}.svg`}
+                      alt={product.name}
+                      className="max-w-full max-h-full w-auto h-auto object-contain"
+                      style={{ background: 'transparent' }}
+                      loading="lazy"
+                    />
+                  </picture>
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
