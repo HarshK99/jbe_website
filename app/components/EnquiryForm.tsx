@@ -6,7 +6,6 @@ import { Button, Input, Select, Textarea } from './ui';
 interface FormData {
   name: string;
   companyName: string;
-  contactPerson: string;
   email: string;
   phone: string;
   country: string;
@@ -31,7 +30,6 @@ export default function EnquiryForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     companyName: '',
-    contactPerson: '',
     email: '',
     phone: '',
     country: 'IN',
@@ -77,7 +75,6 @@ export default function EnquiryForm() {
       const payload = {
         name: formData.name,
         companyName: formData.companyName,
-        contactPerson: formData.contactPerson,
         email: formData.email,
         phone: formData.phone,
         country: formData.country,
@@ -105,7 +102,6 @@ export default function EnquiryForm() {
       setFormData({
         name: '',
         companyName: '',
-        contactPerson: '',
         email: '',
         phone: '',
         country: '',
@@ -173,11 +169,6 @@ export default function EnquiryForm() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <Input
-                label="Contact Person"
-                value={formData.contactPerson}
-                onChange={handleChange('contactPerson')}
-              />
               <Input
                 label="Email *"
                 type="email"

@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 const PHONE_NUMBERS = ['+91-8486417553','+91-99540-51267']; // update the second number as needed
 
@@ -23,7 +23,7 @@ export default function Footer() {
                   className="flex items-center gap-2 hover:underline"
                   aria-label={`Call ${p}`}
                 >
-                  <FaPhone className="w-5 h-5 text-gray-300" aria-hidden />
+                  <FaPhoneAlt className="w-5 h-5 text-gray-300" aria-hidden />
                   <span>{p}</span>
                 </a>
               ))}
@@ -37,7 +37,7 @@ export default function Footer() {
             <p className="text-sm flex items-center justify-center gap-2">
               <a href="https://wa.me/919954051247" className="flex items-center gap-2 hover:underline" aria-label="WhatsApp chat">
                 <FaWhatsapp className="w-5 h-5 text-gray-300" aria-hidden />
-                <span>WhatsApp: +91-99540-51247</span>
+                <span>WhatsApp: +91-84864-17553</span>
               </a>
             </p>
           </div>

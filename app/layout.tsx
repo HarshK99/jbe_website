@@ -19,6 +19,15 @@ export const metadata: Metadata = {
     icon: '/logo_square.png',
     apple: '/logo_square.png'
   },
+  // Ensure pages are indexable by default
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    }
+  }
 };
 
 export default function RootLayout({

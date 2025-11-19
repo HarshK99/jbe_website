@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Expose SITE_URL at build time so server routes can reference it for sitemap/robots
+  env: {
+    SITE_URL: process.env.SITE_URL || 'https://example.com'
+  }
 };
 
 export default nextConfig;
